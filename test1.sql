@@ -57,4 +57,30 @@ select * from employee where id=6 or name="karthik";
 select * from employee where not(age=25 and id=3);
 select * from employee where not(age=30 or name="ajay");
 
+-- Aggregate functions - min,max,count,avg,sum......
+select max(age) from employee; -- returns maximum value from the coulmn
+select min(age) from employee; -- returns minimum value from the coulmn
+select count(id) from employee; -- counts number of rows
+select avg(age) from employee; -- returns the average of data in the column
+select sum(experience) from employee; -- returns sum of all tha values in the column
+
+-- using "as" - alice name
+select count(*) as result from employee; -- counts number of rows in table and named as result
+select avg(age) as average_age from employee; -- alice name used average_age
+select min(age) as minimum_age from employee; -- alice name used minimum_age
+
+-- group by, order by, having
+select * from employee order by experience; -- orderly returns the value. default ascending order
+select * from employee order by experience desc; -- order by descending 
+
+select count(id),age from employee group by age; -- group by the age
+select count(id),age,experience from employee group by age; -- shows error. after group by selected coulmns must to indicate
+select count(id),age,experience from employee group by age,experience; -- shows table but datas are mismatched. so give only columns need to be group by 
+
+-- having is used where we want the grouped data with count >2
+select count(id),age from employee group by age having count(id)<=1; -- returns grouped age with count <=1
+
+
+
+
 
